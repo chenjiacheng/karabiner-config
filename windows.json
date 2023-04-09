@@ -304,6 +304,25 @@
                     "type": "basic"
                 }
             ]
+        },
+        {
+            "description": "f2 => return",
+            "manipulators":
+            [
+                {
+                    "from":
+                    {
+                        "key_code": "f2"
+                    },
+                    "to":
+                    [
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
         }
     ]
 }
