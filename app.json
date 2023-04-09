@@ -1,27 +1,41 @@
 {
-    "title": "Windows",
+    "title": "App",
     "rules":
     [
         {
-            "description": "[Windows] ctrl => command, win => option, alt => control",
+            "description": "[Chrome] option+w => open chrome",
             "manipulators":
             [
                 {
+                    "conditions":
+                    [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers":
+                            [
+                                "^com.google.Chrome"
+                            ]
+                        }
+                    ],
                     "from":
                     {
-                        "key_code": "left_command",
+                        "key_code": "w",
                         "modifiers":
                         {
-                            "optional":
+                            "mandatory":
                             [
-                                "any"
+                                "option"
                             ]
                         }
                     },
                     "to":
                     [
                         {
-                            "key_code": "left_option"
+                            "key_code": "h",
+                            "modifiers":
+                            [
+                                "left_command"
+                            ]
                         }
                     ],
                     "type": "basic"
@@ -29,99 +43,19 @@
                 {
                     "from":
                     {
-                        "key_code": "left_control",
+                        "key_code": "w",
                         "modifiers":
                         {
-                            "optional":
+                            "mandatory":
                             [
-                                "any"
+                                "option"
                             ]
                         }
                     },
                     "to":
                     [
                         {
-                            "key_code": "left_command"
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from":
-                    {
-                        "key_code": "left_option",
-                        "modifiers":
-                        {
-                            "optional":
-                            [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "left_control"
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from":
-                    {
-                        "key_code": "right_command",
-                        "modifiers":
-                        {
-                            "optional":
-                            [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "right_option"
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from":
-                    {
-                        "key_code": "right_control",
-                        "modifiers":
-                        {
-                            "optional":
-                            [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "right_command"
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from":
-                    {
-                        "key_code": "right_option",
-                        "modifiers":
-                        {
-                            "optional":
-                            [
-                                "any"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "right_control"
+                            "shell_command": "open -a 'Google Chrome.app'"
                         }
                     ],
                     "type": "basic"
@@ -129,25 +63,28 @@
             ]
         },
         {
-            "description": "[Windows] alt+f4 => command+q",
+            "description": "[Chrome] f5 => command+r",
             "manipulators":
             [
                 {
-                    "from":
-                    {
-                        "key_code": "f4",
-                        "modifiers":
+                    "conditions":
+                    [
                         {
-                            "mandatory":
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers":
                             [
-                                "control"
+                                "^com.google.Chrome"
                             ]
                         }
+                    ],
+                    "from":
+                    {
+                        "key_code": "f5"
                     },
                     "to":
                     [
                         {
-                            "key_code": "q",
+                            "key_code": "r",
                             "modifiers":
                             [
                                 "left_command"
@@ -159,40 +96,20 @@
             ]
         },
         {
-            "description": "[Windows] alt+tab => command+tab",
+            "description": "[Jetbrains] command+shift+` => command+control+`",
             "manipulators":
             [
                 {
-                    "from":
-                    {
-                        "key_code": "tab",
-                        "modifiers":
-                        {
-                            "mandatory":
-                            [
-                                "control"
-                            ]
-                        }
-                    },
-                    "to":
+                    "conditions":
                     [
                         {
-                            "key_code": "tab",
-                            "modifiers":
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers":
                             [
-                                "left_command"
+                                "^com.jetbrains"
                             ]
                         }
                     ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "[Windows] alt+` => command+`",
-            "manipulators":
-            [
-                {
                     "from":
                     {
                         "key_code": "grave_accent_and_tilde",
@@ -200,7 +117,8 @@
                         {
                             "mandatory":
                             [
-                                "control"
+                                "command",
+                                "shift"
                             ]
                         }
                     },
@@ -210,68 +128,8 @@
                             "key_code": "grave_accent_and_tilde",
                             "modifiers":
                             [
-                                "left_command"
-                            ]
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "[Windows] alt+q => command+q",
-            "manipulators":
-            [
-                {
-                    "from":
-                    {
-                        "key_code": "q",
-                        "modifiers":
-                        {
-                            "mandatory":
-                            [
-                                "control"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "q",
-                            "modifiers":
-                            [
-                                "left_command"
-                            ]
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "[Windows] alt+l => control+command+q",
-            "manipulators":
-            [
-                {
-                    "from":
-                    {
-                        "key_code": "l",
-                        "modifiers":
-                        {
-                            "mandatory":
-                            [
-                                "option"
-                            ]
-                        }
-                    },
-                    "to":
-                    [
-                        {
-                            "key_code": "q",
-                            "modifiers":
-                            [
                                 "left_control",
-                                "left_command"
+                                "left_shift"
                             ]
                         }
                     ],
@@ -280,13 +138,23 @@
             ]
         },
         {
-            "description": "[Windows] alt+d => f11",
+            "description": "[Music] option+c => open music",
             "manipulators":
             [
                 {
+                    "conditions":
+                    [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers":
+                            [
+                                "^com.apple.Music"
+                            ]
+                        }
+                    ],
                     "from":
                     {
-                        "key_code": "d",
+                        "key_code": "c",
                         "modifiers":
                         {
                             "mandatory":
@@ -298,7 +166,91 @@
                     "to":
                     [
                         {
-                            "key_code": "f11"
+                            "key_code": "h",
+                            "modifiers":
+                            [
+                                "left_command"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from":
+                    {
+                        "key_code": "c",
+                        "modifiers":
+                        {
+                            "mandatory":
+                            [
+                                "option"
+                            ]
+                        }
+                    },
+                    "to":
+                    [
+                        {
+                            "shell_command": "open -a 'Music.app'"
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "[SystemSettings] option+s => open system settings",
+            "manipulators":
+            [
+                {
+                    "conditions":
+                    [
+                        {
+                            "type": "frontmost_application_if",
+                            "bundle_identifiers":
+                            [
+                                "^com.apple.system"
+                            ]
+                        }
+                    ],
+                    "from":
+                    {
+                        "key_code": "s",
+                        "modifiers":
+                        {
+                            "mandatory":
+                            [
+                                "option"
+                            ]
+                        }
+                    },
+                    "to":
+                    [
+                        {
+                            "key_code": "h",
+                            "modifiers":
+                            [
+                                "left_command"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from":
+                    {
+                        "key_code": "s",
+                        "modifiers":
+                        {
+                            "mandatory":
+                            [
+                                "option"
+                            ]
+                        }
+                    },
+                    "to":
+                    [
+                        {
+                            "shell_command": "open -a 'System Settings.app'"
                         }
                     ],
                     "type": "basic"
